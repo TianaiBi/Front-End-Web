@@ -42,8 +42,12 @@ div.categories {
   gap: 50px;
   grid-template-columns: 1fr 1fr 1fr;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   grid-template-rows: 100px;
   align-content: space-evenly;
+=======
+  align-content: space-around;
+>>>>>>> Stashed changes
 =======
   align-content: space-around;
 >>>>>>> Stashed changes
@@ -85,7 +89,11 @@ footer {
 .footerright {
   display: flex;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   gap: 80px;
+=======
+  gap: 30px;
+>>>>>>> Stashed changes
 =======
   gap: 30px;
 >>>>>>> Stashed changes
