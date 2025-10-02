@@ -41,16 +41,20 @@ div.categories {
   display: grid;
   gap: 50px;
   grid-template-columns: 1fr 1fr 1fr;
+<<<<<<< Updated upstream
   grid-template-rows: 100px;
   align-content: space-evenly;
+=======
+  align-content: space-around;
+>>>>>>> Stashed changes
   align-items: center;
   margin-top: 100px;
   margin-bottom: 100px;
 }
 
 div.item img{
-  width: 250px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   border-radius: 15px;
 }
 
@@ -80,7 +84,11 @@ footer {
 
 .footerright {
   display: flex;
+<<<<<<< Updated upstream
   gap: 80px;
+=======
+  gap: 30px;
+>>>>>>> Stashed changes
 }
 
 footer ul {
@@ -91,7 +99,6 @@ footer ul {
 }
 
 footer ul li {
-  margin-left: 40px;
   color: black;
   text-align: center;
 }
@@ -123,4 +130,92 @@ nav ul li {
   margin-left: 40px;
   color: black;
   text-align: center;
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: Caprasimo;
+    font-weight: bold;
+    font-size: 100px;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  div.categories {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    align-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  div.item img{
+    width: 220px;
+    height: 160px;
+    border-radius: 15px;
+  }
+
+  .footerright {
+    display: flex;
+    gap: 20px;
+  }
+
+  #craiglist {
+    font-family: Caprasimo;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+  }
+}
+
+/* tablet */
+@media only screen and (min-width: 600px) and (max-width: 768px){
+  h1 {
+    font-family: Caprasimo;
+    font-weight: bold;
+    font-size: 130px;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+  div.categories {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: space-around;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  div.item img{
+    width: 220px;
+    height: 160px;
+    border-radius: 15px;
+  }
+
+  .footerright {
+    display: flex;
+    gap: 20px;
+  }
+
+  #craiglist {
+    font-family: Caprasimo;
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+  }
 }
