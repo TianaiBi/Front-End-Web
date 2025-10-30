@@ -1,0 +1,35 @@
+body {
+    font-family: Georgia, serif;
+    background-color: #f9f7f2;
+    padding: 20px;
+    line-height: 1.5;
+}
+
+#chapter1, #chapter2 {
+    border: 2px solid #c9b79c;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+}
+
+button {
+    transition: all 0.4s ease;
+    margin-right: 10px;
+    padding: 6px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #efe7dc;
+}
+
+button:hover {
+    background-color: #c9b79c;
+    transform: scale(1.04);
+}
+
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+}
