@@ -1,0 +1,10 @@
+#frame {
+  width: 400px;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+#ball {
+  position: relative;
+  left: 0px;
+}
