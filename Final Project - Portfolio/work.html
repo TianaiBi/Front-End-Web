@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tianai Bi – Work</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Quicksand:wght@300..700&display=swap');
+    </style>
+</head>
+<body>
+    <h1 class="fixed-name small">Tianai Bi</h1>
+    
+    <header>
+        <button id="menu-btn" aria-label="Open menu">☰</button>
+        <nav id="navbar">
+             <button id="close-btn" aria-label="Close menu">✕</button>
+             <ul>
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="work.html" class="active">Work</a></li>
+                 <li><a href="index.html#about">About</a></li>
+                 <li><a href="index.html#contact">Contact</a></li>
+             </ul>
+        </nav>
+    </header>
+
+    <section id="work-grid-section" class="work-section">
+        <div class="filter-menu">
+            <button class="filter-btn active" onclick="filterGrid('all', this)">All</button>
+            <button class="filter-btn" data-filter="Painting" onclick="filterGrid('Painting', this)">Painting</button>
+            <button class="filter-btn" data-filter="Animation" onclick="filterGrid('Animation', this)">Animation</button>
+            <button class="filter-btn" data-filter="Film" onclick="filterGrid('Film', this)">Film</button>
+            <button class="filter-btn" data-filter="Interactive Art" onclick="filterGrid('Interactive Art', this)">Interactive Art</button>
+            <button class="filter-btn" data-filter="Mixed Media" onclick="filterGrid('Mixed Media', this)">Mixed Media</button>
+        </div>
+
+        <div id="work-grid" class="work-grid">
+            <p style="text-align:center; color:#999;">Loading works...</p>
+        </div>
+    </section>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button id="close-modal-btn">✕</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+</html>
