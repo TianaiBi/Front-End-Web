@@ -19,6 +19,20 @@ if (openBtn) {
     closeBtn.onclick = () => { menu.classList.remove("open"); };
 }
 
+// name color change animation
+const fixedName = document.querySelector('.fixed-name:not(.small)');
+
+if (fixedName) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        const bgPosition = scrollPercent * 100;
+        
+        fixedName.style.backgroundPosition = `0% ${bgPosition}%`;
+    });
+}
+
 // fetch data
 if (gridContainer) {
     fetchPortfolio();
@@ -180,14 +194,38 @@ const openModal = (fields, includes) => {
 };
 
 // close modal
-closeModalBtn.onclick = () => {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto'; // restore scrolling
-};
-
-window.onclick = (event) => {
-    if (event.target === modal) {
+if (closeModalBtn) {
+    closeModalBtn.onclick = () => {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-};
+        document.body.style.overflow = 'auto'; // restore scrolling
+    };
+}
+
+if (modal) {
+    window.onclick = (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    };
+}
+
+// Copyright Year Auto-Update
+const yearSpan = document.getElementById('copyright-year');
+if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+}
+
+// Close menu on nav link click
+const navLinks = document.querySelectorAll('#navbar a');
+
+if (navLinks) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // When clicked, remove the "open" class to hide the menu
+            if (menu) {
+                menu.classList.remove("open");
+            }
+        });
+    });
+}
