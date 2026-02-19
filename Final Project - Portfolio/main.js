@@ -25,11 +25,23 @@ const fixedName = document.querySelector('.fixed-name:not(.small)');
 if (fixedName) {
     window.addEventListener('scroll', () => {
         const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight - windowHeight;
         const scrollPercent = scrollTop / docHeight;
         const bgPosition = scrollPercent * 100;
         
         fixedName.style.backgroundPosition = `0% ${bgPosition}%`;
+
+        //how far from the bottom of the page
+        const distanceToBottom = docHeight - scrollTop;
+        const fadeStart = windowHeight + 200;
+
+        if (distanceToBottom < fadeStart) {
+            let opacity = distanceToBottom / fadeStart;
+            fixedName.style.opacity = opacity;
+        } else {
+            fixedName.style.opacity = 1;
+        }
     });
 }
 
@@ -42,6 +54,11 @@ async function fetchPortfolio() {
     try {
         const response = await fetch(endpoint);
         const data = await response.json();
+        data.items.sort((a, b) => {
+            const yearA = parseInt(a.fields.year) || 0;
+            const yearB = parseInt(b.fields.year) || 0;
+            return yearB - yearA; 
+        });
         renderGrid(data.items, data.includes);
         
         checkUrlParams();
@@ -107,6 +124,32 @@ function checkUrlParams() {
             filterGrid(category, targetBtn);
         }
     }
+}
+
+const filterMenu = document.querySelector('.filter-menu');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+if (filterMenu && filterBtns) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            //Get the exact visual position of button and menu
+            const menuRect = filterMenu.getBoundingClientRect();
+            const btnRect = btn.getBoundingClientRect();
+
+            //Calculate the center of the menu and the button
+            const menuCenter = menuRect.width / 2;
+            const btnCenter = btnRect.left - menuRect.left + (btnRect.width / 2);
+
+            //Find the difference (How far off-center is it?)
+            const offset = btnCenter - menuCenter;
+
+            //Adjust the scroll position by that difference
+            filterMenu.scrollBy({
+                left: offset,
+                behavior: 'smooth'
+            });
+        });
+    });
 }
 
 // modal
@@ -180,9 +223,7 @@ const openModal = (fields, includes) => {
 
             <div class="info-column">
                 <h3 class="concept-header">DESCRIPTION</h3>
-                <div class="description-text">
-                    ${description}
-                </div>
+                <div class="description-text">${description}</div>
             </div>
 
         </div>
@@ -198,6 +239,13 @@ if (closeModalBtn) {
     closeModalBtn.onclick = () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto'; // restore scrolling
+
+        const iframe = document.querySelector(".modal iframe");
+        if (iframe) {
+            const tempSrc = iframe.src;
+            iframe.src = "";       // kill source
+            iframe.src = tempSrc;  // reset to start
+        }
     };
 }
 
@@ -206,6 +254,13 @@ if (modal) {
         if (event.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+
+            const iframe = document.querySelector(".modal iframe");
+            if (iframe) {
+                const tempSrc = iframe.src;
+                iframe.src = "";
+                iframe.src = tempSrc;
+            }
         }
     };
 }
