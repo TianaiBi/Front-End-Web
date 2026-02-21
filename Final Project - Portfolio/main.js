@@ -198,13 +198,6 @@ const openModal = (fields, includes) => {
                     return ''; // returns nothing if no video
                 })()}
 
-                ${webLink ? `
-                    <div style="margin-bottom: 30px;">
-                        <a href="${webLink}" target="_blank" class="play-btn">
-                            ▶ Launch Interactive Piece
-                        </a>
-                    </div>` : ''}
-
                 ${(() => {
                     if (gallery && gallery.length > 0) {
                         let galleryHtml = `<div class="gallery-stack">`;
@@ -219,6 +212,14 @@ const openModal = (fields, includes) => {
                     }
                     return '';
                 })()}
+
+                ${webLink ? `
+                    <div style="margin-bottom: 30px;">
+                        <a href="${webLink}" target="_blank" class="play-btn">
+                            ▶ Launch Interactive Piece
+                        </a>
+                    </div>` : ''}
+
             </div>
 
             <div class="info-column">
