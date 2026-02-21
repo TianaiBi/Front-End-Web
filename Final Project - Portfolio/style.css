@@ -330,8 +330,8 @@ ul a:active {
   margin-bottom: 15px;
 }
 
-/* painting */
-.project-card[data-category="Painting"] img {
+/* Art & Design */
+.project-card[data-category="Art & Design"] img {
   object-fit: contain;
   background-color: white;
 }
